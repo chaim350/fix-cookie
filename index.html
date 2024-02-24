@@ -26,8 +26,8 @@
   <body>
     <form>
     <label>Name<input type="text" name="name"></label>
-    <label>eMail<input type="email" name="email" required></label>
-    <label>Phone<input type="text" name="phone" required></label>
+    <label>Email<input type="email" name="email" required></label>
+    <label>Phone<input type="tel" name="phone" required></label>
     <button type="submit">submit</button>
     </form>  
     
@@ -60,7 +60,7 @@
     // פרמטרים לשליחה
     data.append('name', formData.get('name'));
     data.append('email', formData.get('email'));
-    data.append('email', formData.get('phone'));
+    data.append('phone', formData.get('phone'));
     data.append('channelid', channelid);
     
   
