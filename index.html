@@ -26,7 +26,7 @@
   <body>
     <form>
     <label>Name<input type="text" name="name"></label>
-    <label>Email<input type="email" name="email" required></label>
+    <label>eMail<input type="email" name="email" required></label>
     <label>Phone<input type="text" name="phone" required></label>
     <button type="submit">submit</button>
     </form>  
@@ -48,7 +48,7 @@
   
   <!-- שליחת נתונים לפיקס -->
   <script>
-      const form = document.querySelector('#fixapi > div > form');
+      const form = document.querySelector('body > form');
   
   form.addEventListener('submit', (event) => {
     event.preventDefault();
