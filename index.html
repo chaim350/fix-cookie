@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <!-- Fixdigital Code -->
+  <script>
+  var fixdigital_params = {
+  defaultphone:'', 
+  phoneSelector:'.fix_smartphone, .fix_smartphone1 , .fix_smartphone2', 
+  phoneSelectorHref:'.fix_smartphone_href, .fix_smartphone_href1 , .fix_smartphone_href2',
+  api_type: 8, 
+  api_clientkey: '1665', 
+  api_tenantkey:'82', 
+  api_projectid: '9314', 
+  api_projecttypeid: '5',  
+  sync:true,  
+  forms:[], 
+  cookie_expired:43200
+  };</script>
+  <script>
+  !function(e){if(e.fixdigital=e.fixdigital||{},!e.fixdigital.cookie){e.fixdigital.cookie=e.fixdigital.cookie||{};var i,r=e.fixdigital.cookie;r.cookie_query="fixdigital.queryparams",r.cookie_hash="fixdigital.hashparams",r.cookie_referer="fixdigital.referer",r.cookie_original_referer="fixdigital.origin_referer",r.cookie_expired=10,r.cookie_original_expired=e.fixdigital_params.cookie_expired,r.crossdomain=(i=function(e){var i=e.split(".");"www"!==i[0]&&"m"!==i[0]&&"mobile"!==i[0]||i.shift();return i.join(".")}(location.hostname),"."+location.hostname.substring(location.hostname.indexOf(i))),r.getCookie=function(e){var i=document.cookie.match(new RegExp("(?:^|; )"+e.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g,"\\$1")+"=([^;]*)"));return i?decodeURIComponent(i[1]):void 0},r.deleteCookie=function(e){for(var i=r.crossdomain.split(".");i&&0<i.length;){var o=i.join(".");r.setCookie(e,"",{expires:-1,domain:o,path:"/"}),i.shift()}},r.setCookie=function(e,i,o){var r=(o=o||{}).expires;if("number"==typeof r&&r){var a=new Date;a.setTime(a.getTime()+1e3*r),r=o.expires=a}r&&r.toUTCString&&(o.expires=r.toUTCString());var t=e+"="+(i=encodeURIComponent(i));for(var n in o){t+="; "+n;var c=o[n];!0!==c&&(t+="="+c)}document.cookie=t},void 0===r.getCookie(r.cookie_referer)&&(r.setCookie(r.cookie_query,location.search,{expires:r.cookie_expired,domain:r.crossdomain}),r.setCookie(r.cookie_hash,location.hash,{expires:r.cookie_expired,domain:r.crossdomain}),r.setCookie(r.cookie_referer,document.referrer,{expires:r.cookie_expired,domain:r.crossdomain}))}}(window);
+  </script>
+  <script id="fixdigital_script" src="https://lpc.fixdigital.co.il/external_files/scripts/clp/fixdigital_integrate.js" async></script>
+  <!-- End Fixdigital Code -->
+  
+  </head>
+  
+  <body>
+    <form>
+    <label>Name<input type="name"></label>
+    <label>eMail<input type="email" required></label>
+    <button>submit</button>
+    </form>  
+    
+  <!-- חילוץ קוקיז של Channelid-->
+  <script>
+  
+      // קבלת כל הקוקיז
+  const cookies = document.cookie;
+  
+  // חיפוש הקוקי עם שם ספציפי
+  const cookieChannel = "fixdigital.origin_channeld";
+  const channelid = cookies.split("; ").find(cookie => cookie.startsWith(cookieChannel + "=")).split("=")[1];
+  
+  
+  console.log(channelid); 
+  
+  </script>
+  
+  <!-- שליחת נתונים לפיקס -->
+  <script>
+      const form = document.querySelector('#fixapi > div > form');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData(form);
+  
+    const data = new URLSearchParams();
+  
+    // פרמטרים לשליחה
+    data.append('name', formData.get('name'));
+    data.append('email', formData.get('email'));
+    data.append('channelid', channelid);
+    
+  
+    fetch('https://webhook.site/891cf6b6-445c-47bc-8c8b-12b69811aee8', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: data.toString(),
+    })
+      
+  });
+  
+  
+  
+  //   fetch('https://www.fixdigital.co.il/api/v1.2/lead/addApi?projectID=9314&projectTypeID=5&clientID=1665&tenantID=82', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //     },
+  //     body: data.toString(),
+  //   })
+  //     .then((response) => {
+  //       // עיבוד תגובת השרת
+  //     })
+  //     .catch((error) => {
+  //       // עיבוד שגיאה
+  //     });
+  // });
+  
+  
+  </script>
+  </body>
+</html>
