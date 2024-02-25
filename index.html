@@ -31,18 +31,20 @@
     <button type="submit">submit</button>
     </form>  
     
-  <!-- חילוץ קוקיז של Channelid-->
+  <!--חילוץ קוקיז-->
   <script>
   
-      // קבלת כל הקוקיז
+  // Get all cookies
   const cookies = document.cookie;
   
-  // חיפוש הקוקי עם שם ספציפי
+  // cookie Channel
   const cookieChannel = "fixdigital.origin_channeld";
   const channelid = cookies.split("; ").find(cookie => cookie.startsWith(cookieChannel + "=")).split("=")[1];
-  
-  
   console.log(channelid); 
+
+  // cookie UrlRefer 
+  const cookieReferer = "fixdigital.origin_referer";
+  const UrlRefer = cookies.split("; ").find(cookie => cookie.startsWith(cookieReferer + "=")).split("=")[1];
   
   </script>
   
@@ -57,11 +59,13 @@
   
     const data = new URLSearchParams();
   
-    // פרמטרים לשליחה
+    // Paremeters
     data.append('name', formData.get('name'));
     data.append('email', formData.get('email'));
     data.append('phone', formData.get('phone'));
     data.append('channelid', channelid);
+    data.append('UrlRefer', UrlRefer);
+    data.append('FormUrl', window.location);
     
   
     fetch('https://www.fixdigital.co.il/api/v1.2/lead/addApi?projectID=9314&projectTypeID=5&clientID=1665&tenantID=82', {
@@ -74,24 +78,7 @@
       
   });
   
-  
-  
-  //   fetch('https://www.fixdigital.co.il/api/v1.2/lead/addApi?projectID=9314&projectTypeID=5&clientID=1665&tenantID=82', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //     },
-  //     body: data.toString(),
-  //   })
-  //     .then((response) => {
-  //       // עיבוד תגובת השרת
-  //     })
-  //     .catch((error) => {
-  //       // עיבוד שגיאה
-  //     });
-  // });
-  
-  
+    
   </script>
   </body>
 </html>
