@@ -44,7 +44,7 @@
 
   // cookie UrlRefer 
   const cookieReferer = "fixdigital.origin_referer";
-  const UrlRefer = cookies.split("; ").find(cookie => cookie.startsWith(cookieReferer + "=")).split("=")[1];
+  const urlRefer = cookies.split("; ").find(cookie => cookie.startsWith(cookieReferer + "=")).split("=")[1];
   
   </script>
   
@@ -64,7 +64,7 @@
     data.append('email', formData.get('email'));
     data.append('phone', formData.get('phone'));
     data.append('channelid', channelid);
-    data.append('UrlRefer', UrlRefer);
+    data.append('urlRefer', urlRefer);
     data.append('FormUrl', window.location);
     
   
